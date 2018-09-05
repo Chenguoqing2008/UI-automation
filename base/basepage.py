@@ -3,7 +3,6 @@ Created on September 18, 2015
 
 @author: oleg-toporkov
 """
-import logging
 from time import sleep
 
 from selenium.webdriver.common.action_chains import ActionChains
@@ -13,22 +12,10 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 
 from base.decorators import log_exception
-# from utilities.config import Config
+from base.precondition import PreEnv
 
 
-class BasePage(object):
-    """
-    Base page representation.
-    Contains all actions related to UI interaction.
-    All pages may be inherited from this class.
-    """
-    def __init__(self, browser):
-        """
-        :type browser: selenium.webdriver.*
-        """
-        self.browser = browser
-        self.logger = logging.getLogger(self.__class__.__name__)
-        self.timeout = 15
+class BasePage(PreEnv):
 
     @log_exception('Failed to get web element with xpath: {}')
     def _get_element(self, element, expected_condition=expected_conditions.presence_of_element_located, wait=None):

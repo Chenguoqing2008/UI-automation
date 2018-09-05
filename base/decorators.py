@@ -15,7 +15,7 @@ def log_exception(message, logger=None):
         @wraps(func)
         def wrapper(*args, **kwargs):
             if logger is None:
-                _self = args[0]  # self
+                _self = args[0]
                 log = getattr(_self, 'logger')
             else:
                 log = logger
