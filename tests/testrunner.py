@@ -7,21 +7,23 @@ from tests.SM.sm_dashboard import SMDashBoardPage
 from tests.IM.im_mainpage import IMMainPage
 from tests.DM.dm_dashboard import DMDashBoardPage
 from tests.SA.sa_homepage import SAHomePage
-# from tests.SM.dm_dashboard import SMDashBoardPage2
-# from tests.SM.sa_dashboard import SMDashBoardPage3
-from concurrencytest import ConcurrentTestSuite, fork_for_tests
-from testtools import ConcurrentStreamTestSuite
-import testtools as testtools
+# from concurrencytest import ConcurrentTestSuite, fork_for_tests
+# from testtools import ConcurrentStreamTestSuite
+# import testtools as testtools
 
 
 def main():
 
     loader = TestLoader()
-    suite = TestSuite((loader.loadTestsFromTestCase(SAHomePage)
+    suite = TestSuite((loader.loadTestsFromTestCase(SAHomePage),
+                       loader.loadTestsFromTestCase(SMDashBoardPage),
+                       loader.loadTestsFromTestCase(IMMainPage),
+                       loader.loadTestsFromTestCase(DMDashBoardPage)
                        ))
-    runner = TextTestRunner(verbosity=2)
 
-    runner.run(suite)
+    with open('UnittestTextReport.html', 'a') as f:
+        runner = TextTestRunner(stream=f, verbosity=2)
+        runner.run(suite)
 
     # concurrent_suite = ConcurrentTestSuite(suite, fork_for_tests(1))
     # runner.run(concurrent_suite)

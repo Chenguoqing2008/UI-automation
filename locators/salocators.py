@@ -11,6 +11,6 @@ class SALocators:
 
     # logout
     moreicon = ".tabbar a:nth-child(4)"
-    logout = ".more-page  div:nth-child(5)  >div"
+    logout = ".more-page  div:nth-child(5) >div"
 
 
