@@ -1,0 +1,4 @@
+{
+  "test_sm_dashboard.py::SMDashBoardPage::test_sm_dashboard_login": true,
+  "test_sm_dashboard.py::SMDashBoardPage::test_sm_login": true
+}
