@@ -19,7 +19,7 @@ class PreEnv(unittest.TestCase):
         cls.timeout = 10
 
     @classmethod
-    def tearDownClass(cls, browser):
+    def tearDownClass(cls):
         cls.browser.quit()
 
     @staticmethod

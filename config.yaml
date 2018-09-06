@@ -1,0 +1,5 @@
+QA:
+  SM:
+    URL: "http://qasm.percolata.com"
+    username: "beta17@calendar.percolata.com"
+    password: "baysensor"
