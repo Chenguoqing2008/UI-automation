@@ -15,8 +15,8 @@ class PreEnv(unittest.TestCase):
         chrome_driver_path = cls._getDriverPath()
         executable_path = {'executable_path': chrome_driver_path}
         cls.browser = Browser('chrome', **executable_path)
+        cls.browser.driver.maximize_window()
         cls.logger = logging.getLogger(cls.__class__.__name__)
-        cls.timeout = 10
 
     @classmethod
     def tearDownClass(cls):
