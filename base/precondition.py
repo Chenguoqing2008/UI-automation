@@ -6,9 +6,11 @@ from splinter import Browser
 import logging
 import os
 import platform
+import nose
 
 
 class PreEnv(unittest.TestCase):
+    _multiprocess_shared_ = True
 
     @classmethod
     def setUpClass(cls):

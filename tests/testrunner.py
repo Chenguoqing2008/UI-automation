@@ -3,10 +3,10 @@
 
 
 from unittest import TestLoader, TestSuite, TextTestRunner
-from tests.SM.sm_dashboard import SMDashBoardPage
-from tests.IM.im_mainpage import IMMainPage
-from tests.DM.dm_dashboard import DMDashBoardPage
-from tests.SA.sa_homepage import SAHomePage
+from tests.SM.test_sm_dashboard import SMDashBoardPage
+from tests.IM.test_im_mainpage import IMMainPage
+from tests.DM.test_dm_dashboard import DMDashBoardPage
+from tests.SA.test_sa_homepage import SAHomePage
 # from concurrencytest import ConcurrentTestSuite, fork_for_tests
 # from testtools import ConcurrentStreamTestSuite
 # import testtools as testtools
