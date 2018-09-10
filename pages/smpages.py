@@ -7,26 +7,24 @@ from locators.smlocators import SMLocators
 
 class SMPages(BasePage):
 
-    # def __init__(self):
-    #     self.browser = __class__.browser
-
-    # login
-    name = "username"
-    password = "password"
-    login = "login"
-
-    # logout
-    menu = "md-toolbar.main-toolbar button"
-    signout = "md-toolbar > div > button"
+    def __init__(self, browser):
+        super().__init__(browser)
+        self.locators = SMLocators
 
     # login signout page
-    def login_button(self):
-        return self.browser.driver.find_element_by_css_selector(SMLocators.login).click()
+    def login(self, username, password):
+        self.browser.fill(self.locators.name, username)
+        self.browser.fill(self.locators.password, password)
+        login_button = self.browser.find_by_css(self.locators.login)
+        login_button.click()
+
+    def logout(self):
+        pass
 
     def menu_icon(self):
-        return self.browser.find_by_css(SMLocators.menu).first
+        return self.browser.find_by_css(self.locator.menu).first
 
     def signout_button(self):
-        return self.browser.find_by_css(SMLocators.signout).first
+        return self.browser.find_by_css(self.locator.signout).first
 
 
