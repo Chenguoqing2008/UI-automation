@@ -3,7 +3,7 @@
 
 from locators.salocators import SALocators
 from utilities import util
-from base.precondition import PreEnv
+from base.base_page import PreEnv
 import time
 
 
