@@ -1,16 +1,18 @@
 #! /usr/bin/python3
 # _*_ coding:utf-8 _*_
 
+from selenium.webdriver.common.by import By
+
 
 class IMLocators:
 
     # login
     name = "email"
     password = "password"
-    login = ".input-field button"
+    login = (By.CSS_SELECTOR, ".input-field button")
 
     # logout
-    logouticon = ".dropdown-button"
+    logouticon = (By.CSS_SELECTOR, ".dropdown-button")
     logout = "logout"
 
 

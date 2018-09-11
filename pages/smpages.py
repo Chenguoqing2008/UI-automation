@@ -13,18 +13,21 @@ class SMPages(BasePage):
 
     # login signout page
     def login(self, username, password):
-        self.browser.fill(self.locators.name, username)
-        self.browser.fill(self.locators.password, password)
-        login_button = self.browser.find_by_css(self.locators.login)
+        self.fill_from(self.locators.name, username)
+        self.fill_from(self.locators.password, password)
+        login_button = self.get_web_element(*self.locators.login)
         login_button.click()
 
-    def logout(self):
-        pass
+    def signout(self):
+        menu_icon = self.get_web_element(*self.locators.menu)
+        menu_icon.click()
+        signout_button = self.get_web_element(*self.locators.signout)
+        signout_button.click()
 
-    def menu_icon(self):
-        return self.browser.find_by_css(self.locator.menu).first
-
-    def signout_button(self):
-        return self.browser.find_by_css(self.locator.signout).first
+    # def menu_icon(self):
+    #     return
+    #
+    # def signout_button(self):
+    #     return self.find_elements_by_css(self.locator.signout).first
 
 

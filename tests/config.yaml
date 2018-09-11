@@ -16,6 +16,6 @@ QA:
 
   IM:
     URL: "http://qaim.percolata.com/login"
-    username: "support@percolata.com"
+    username: "test@percolata.com"
     password: "zip94303"
 

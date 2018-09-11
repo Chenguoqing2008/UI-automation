@@ -2,12 +2,12 @@
 # _*_ coding:utf-8 _*_
 
 import time
+import unittest
+
+from splinter.browser import Browser
+
 from pages.smpages import SMPages as SMDashBoardPage
 from utilities import util
-from base.base_page import BasePage
-from pages.smpages import SMPages
-from splinter.browser import Browser
-import unittest
 
 
 class SMDashBoardTest(unittest.TestCase):
@@ -32,10 +32,10 @@ class SMDashBoardTest(unittest.TestCase):
         self.smdashboard.open(qa_url)
         self.smdashboard.login(username, password)
         time.sleep(5)
-        self.assertEquals(1 == 1)
-    #
-    # def test_sm_logout(self):
-    #     SMDashBoardPage.menu_icon().click()
-    #     SMDashBoardPage.signout_button().click()
-    #     self.assertEquals(1 == 1)
+
+    def test_sm_signout(self):
+        self.smdashboard.signout()
+        # assert 1 == 2
+
+
 
