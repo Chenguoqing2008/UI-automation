@@ -24,10 +24,6 @@ class SMPages(BasePage):
         signout_button = self.get_web_element(*self.locators.signout)
         signout_button.click()
 
-    # def menu_icon(self):
-    #     return
-    #
-    # def signout_button(self):
-    #     return self.find_elements_by_css(self.locator.signout).first
+
 
 

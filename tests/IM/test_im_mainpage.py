@@ -1,11 +1,9 @@
 #! /usr/bin/python3
 # _*_ coding:utf-8 _*_
 
-import time
+
 import unittest
-
 from splinter.browser import Browser
-
 from pages.impages import IMPages as IMMaindPage
 from utilities import util
 
@@ -31,9 +29,7 @@ class IMMainPageTest(unittest.TestCase):
         password = self.config['QA']['IM']['password']
         self.immainpage.open(qa_url)
         self.immainpage.login(username, password)
-        time.sleep(5)
 
     def test_im_logout(self):
         self.immainpage.logout()
-        # assert 1 == 2
 

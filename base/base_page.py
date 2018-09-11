@@ -1,7 +1,8 @@
 #! /usr/bin/python3
 # _*_ coding:utf-8 _*_
 
-from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.expected_conditions import presence_of_all_elements_located as all_elements_located
+from selenium.webdriver.support.expected_conditions import presence_of_element_located as element_located
 from selenium.webdriver.support.ui import WebDriverWait
 from splinter.browser import Browser
 
@@ -29,7 +30,7 @@ class BasePage(object):
         # self.logger.info('Fill the form name: {}'.format(name))
 
     # @log_exception('Failed to get web element with xpath: {}')
-    def _get_elements(self, *locator, expected_condition=expected_conditions.presence_of_all_elements_located, wait=None):
+    def _get_elements(self, *locator, expected_condition=all_elements_located, wait=None):
         if wait is None:
             wait = self.timeout
 
@@ -41,7 +42,7 @@ class BasePage(object):
         return element
 
     # @log_exception('Failed to get web element with xpath: {}')
-    def _get_element(self, *locator, expected_condition=expected_conditions.presence_of_element_located, wait=None):
+    def _get_element(self, *locator, expected_condition=element_located, wait=None):
         if wait is None:
             wait = self.timeout
 

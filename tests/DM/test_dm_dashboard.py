@@ -1,11 +1,8 @@
 #! /usr/bin/python3
 # _*_ coding:utf-8 _*_
 
-import time
 import unittest
-
 from splinter.browser import Browser
-
 from pages.dmpages import DMPages as DMDashBoardPage
 from utilities import util
 
@@ -31,9 +28,8 @@ class DMDashBoardTest(unittest.TestCase):
         password = self.config['QA']['DM']['password']
         self.dmdashboard.open(qa_url)
         self.dmdashboard.login(username, password)
-        time.sleep(5)
 
     def test_dm_signout(self):
         self.dmdashboard.signout()
-        # assert 1 == 2
+
 

@@ -13,6 +13,6 @@ class IMLocators:
 
     # logout
     logouticon = (By.CSS_SELECTOR, ".dropdown-button")
-    logout = "logout"
+    logout = (By.ID, "logout")
 
 

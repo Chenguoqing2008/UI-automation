@@ -1,11 +1,9 @@
 #! /usr/bin/python3
 # _*_ coding:utf-8 _*_
 
-import time
 import unittest
-
 from splinter.browser import Browser
-
+from selenium import webdriver
 from pages.smpages import SMPages as SMDashBoardPage
 from utilities import util
 
@@ -16,7 +14,9 @@ class SMDashBoardTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.browser = Browser('chrome')
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.headless = False
+        cls.browser = Browser('chrome', options=chrome_options)
         cls.browser.driver.maximize_window()
         cls.smdashboard = SMDashBoardPage(cls.browser)
         # cls.logger = logging.getLogger(cls.__class__.__name__)
@@ -31,11 +31,9 @@ class SMDashBoardTest(unittest.TestCase):
         password = self.config['QA']['SM']['password']
         self.smdashboard.open(qa_url)
         self.smdashboard.login(username, password)
-        time.sleep(5)
 
     def test_sm_signout(self):
         self.smdashboard.signout()
-        # assert 1 == 2
 
 
 
