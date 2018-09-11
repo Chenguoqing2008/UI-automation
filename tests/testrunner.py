@@ -3,10 +3,10 @@
 
 
 from unittest import TestLoader, TestSuite, TextTestRunner
-from tests.SM.sm_dashboard import SMDashBoardPage
-from tests.IM.test_im_mainpage import IMMainPage
-from tests.DM.test_dm_dashboard import DMDashBoardPage
-from tests.SA.test_sa_homepage import SAHomePage
+from tests.SM.test_sm_dashboard import SMDashBoardTest
+from tests.IM.test_im_mainpage import IMMainPageTest
+from tests.DM.test_dm_dashboard import DMDashBoardTest
+from tests.SA.test_sa_homepage import SAHomePageTest
 # from concurrencytest import ConcurrentTestSuite, fork_for_tests
 # from testtools import ConcurrentStreamTestSuite
 # import testtools as testtools
@@ -15,10 +15,10 @@ from tests.SA.test_sa_homepage import SAHomePage
 def main():
 
     loader = TestLoader()
-    suite = TestSuite((loader.loadTestsFromTestCase(SAHomePage),
-                       loader.loadTestsFromTestCase(SMDashBoardPage),
-                       loader.loadTestsFromTestCase(IMMainPage),
-                       loader.loadTestsFromTestCase(DMDashBoardPage)
+    suite = TestSuite((loader.loadTestsFromTestCase(SAHomePageTest),
+                       loader.loadTestsFromTestCase(SMDashBoardTest),
+                       loader.loadTestsFromTestCase(IMMainPageTest),
+                       loader.loadTestsFromTestCase(DMDashBoardTest)
                        ))
 
     with open('UnittestTextReport.html', 'a') as f:

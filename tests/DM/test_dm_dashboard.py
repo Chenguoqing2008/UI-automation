@@ -25,7 +25,7 @@ class DMDashBoardTest(unittest.TestCase):
     def tearDownClass(cls):
         cls.browser.quit()
 
-    def test_sm_login(self):
+    def test_dm_login(self):
         qa_url = __class__.config['QA']['DM']['URL']
         username = self.config['QA']['DM']['username']
         password = self.config['QA']['DM']['password']
@@ -33,7 +33,7 @@ class DMDashBoardTest(unittest.TestCase):
         self.dmdashboard.login(username, password)
         time.sleep(5)
 
-    def test_sm_signout(self):
+    def test_dm_signout(self):
         self.dmdashboard.signout()
         # assert 1 == 2
 

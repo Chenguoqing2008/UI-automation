@@ -5,7 +5,7 @@ from base.base_page import BasePage
 from locators.imlocators import IMLocators
 
 
-class DMPages(BasePage):
+class IMPages(BasePage):
 
     def __init__(self, browser):
         super().__init__(browser)
@@ -21,5 +21,6 @@ class DMPages(BasePage):
     def logout(self):
         menu_icon = self.get_web_element(*self.locators.logouticon)
         menu_icon.click()
-        signout_button = self.get_web_element(*self.locators.logout)
-        signout_button.click()
+        logout_button = self.get_web_element(*self.locators.logout)
+        logout_button.click()
+

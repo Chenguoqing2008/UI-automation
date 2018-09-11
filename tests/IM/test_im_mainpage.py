@@ -6,11 +6,11 @@ import unittest
 
 from splinter.browser import Browser
 
-from pages.smpages import SMPages as DMDashBoardPage
+from pages.impages import IMPages as IMMaindPage
 from utilities import util
 
 
-class SMDashBoardTest(unittest.TestCase):
+class IMMainPageTest(unittest.TestCase):
 
     config = util.getConfig()
 
@@ -18,22 +18,22 @@ class SMDashBoardTest(unittest.TestCase):
     def setUpClass(cls):
         cls.browser = Browser('chrome')
         cls.browser.driver.maximize_window()
-        cls.dmdashboard = DMDashBoardPage(cls.browser)
+        cls.immainpage = IMMaindPage(cls.browser)
         # cls.logger = logging.getLogger(cls.__class__.__name__)
 
     @classmethod
     def tearDownClass(cls):
         cls.browser.quit()
 
-    def test_sm_login(self):
-        qa_url = __class__.config['QA']['DM']['URL']
-        username = self.config['QA']['DM']['username']
-        password = self.config['QA']['DM']['password']
-        self.dmdashboard.open(qa_url)
-        self.dmdashboard.login(username, password)
+    def test_im_login(self):
+        qa_url = __class__.config['QA']['IM']['URL']
+        username = self.config['QA']['IM']['username']
+        password = self.config['QA']['IM']['password']
+        self.immainpage.open(qa_url)
+        self.immainpage.login(username, password)
         time.sleep(5)
 
-    def test_sm_signout(self):
-        self.dmdashboard.signout()
+    def test_im_logout(self):
+        self.immainpage.logout()
         # assert 1 == 2
 
