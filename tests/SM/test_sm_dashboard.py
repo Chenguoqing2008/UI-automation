@@ -3,29 +3,29 @@
 
 import unittest
 from splinter.browser import Browser
-from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from pages.smpages import SMPages as SMDashBoardPage
 from utilities import util
-
+from selenium import webdriver
+from selenium.webdriver import DesiredCapabilities
 
 class SMDashBoardTest(unittest.TestCase):
 
     config = util.getConfig()
-    remote_server_url = 'http://YOUR_SAUCE_USERNAME:YOUR_SAUCE_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub'
+    remote_server_url = 'http://192.168.0.115:4444/wd/hub'
 
     @classmethod
     def setUpClass(cls):
-        chrome_options = webdriver.ChromeOptions()
-        chrome_options.add_argument("--start-maximized")
-        chrome_options.add_argument("--headless")
-        # cls.browser = Browser('chrome', options=chrome_options)
+        chrome_options = Options()
+        chrome_options.add_argument("headless")
+        capabilities = chrome_options.to_capabilities()
         cls.browser = Browser(
-            #driver_name="remote",
-             #                 url=cls.remote_server_url,
-                              'chrome',
-                              # name='Test chrome in headless mode',
-                              options=chrome_options
-                              )
+                             driver_name="remote",
+                             url=cls.remote_server_url,
+                             browser='chrome',
+                             desired_capabilities=capabilities)
+
+        cls.browser.driver.maximize_window()
         cls.smdashboard = SMDashBoardPage(cls.browser)
         # cls.logger = logging.getLogger(cls.__class__.__name__)
 
