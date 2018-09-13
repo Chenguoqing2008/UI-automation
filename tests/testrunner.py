@@ -3,7 +3,7 @@
 
 
 from unittest import TestLoader, TestSuite, TextTestRunner
-from tests.SM.test_sm_dashboard import SMDashBoardTest
+# from tests.SM.test_sm_dashboard import SMDashBoardTest
 from tests.IM.test_im_mainpage import IMMainPageTest
 from tests.DM.test_dm_dashboard import DMDashBoardTest
 from tests.SA.test_sa_homepage import SAHomePageTest
@@ -16,7 +16,7 @@ def main():
 
     loader = TestLoader()
     suite = TestSuite((loader.loadTestsFromTestCase(SAHomePageTest),
-                       loader.loadTestsFromTestCase(SMDashBoardTest),
+                       # loader.loadTestsFromTestCase(SMDashBoardTest),
                        loader.loadTestsFromTestCase(IMMainPageTest),
                        loader.loadTestsFromTestCase(DMDashBoardTest)
                        ))
