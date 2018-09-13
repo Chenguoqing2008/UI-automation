@@ -4,9 +4,9 @@
 
 from unittest import TestLoader, TestSuite, TextTestRunner
 # from tests.SM.test_sm_dashboard import SMDashBoardTest
-from tests.IM.test_im_mainpage import IMMainPageTest
-from tests.DM.test_dm_dashboard import DMDashBoardTest
-from tests.SA.test_sa_homepage import SAHomePageTest
+from tests.IM.im_mainpage import IMMainPageTest
+from tests.DM.dm_dashboard import DMDashBoardTest
+from tests.SA.sa_homepage import SAHomePageTest
 # from concurrencytest import ConcurrentTestSuite, fork_for_tests
 # from testtools import ConcurrentStreamTestSuite
 # import testtools as testtools
