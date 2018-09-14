@@ -3,20 +3,24 @@
 
 
 from pages.dmpages import DMPages as DMDashBoardPage
+import pytest
 
 
 class TestDMDashBoardTest:
 
-    def test_dm_login(self):
+    @pytest.fixture()
+    def dmdashboard(self):
+        dmdashboard = DMDashBoardPage(self.browser)
+        return dmdashboard
+
+    def test_dm_login(self, dmdashboard):
         url = self.config['DM']['URL']
         username = self.config['DM']['username']
         password = self.config['DM']['password']
-        self.dmdashboard = DMDashBoardPage(self.browser)
-        self.dmdashboard.open(url)
-        self.dmdashboard.login(username, password)
+        dmdashboard.open(url)
+        dmdashboard.login(username, password)
 
-    def test_dm_signout(self):
-        self.dmdashboard = DMDashBoardPage(self.browser)
-        self.dmdashboard.signout()
+    def test_dm_signout(self, dmdashboard):
+        dmdashboard.signout()
 
 

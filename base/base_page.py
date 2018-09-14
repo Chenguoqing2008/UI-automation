@@ -5,6 +5,7 @@ from selenium.webdriver.support.expected_conditions import presence_of_all_eleme
 from selenium.webdriver.support.expected_conditions import presence_of_element_located as element_located
 from selenium.webdriver.support.ui import WebDriverWait
 from splinter.browser import Browser
+from selenium.webdriver.common.action_chains import ActionChains
 
 """Inspired by  oleg-toporkov in github"""
 """Inspired by  Marcin Koprek in github"""
@@ -62,4 +63,8 @@ class BasePage(object):
         self._get_element(*locator)
         element = self.browser.driver.find_element(*locator)
         return element
+
+    def move_to_click(self, webelement):
+        return ActionChains(self.browser.driver).move_to_element(webelement).click().perform()
+
 

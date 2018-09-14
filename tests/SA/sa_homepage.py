@@ -3,19 +3,23 @@
 
 
 from pages.sapages import SAPages as SAHomePage
+import pytest
 
 
 class TestSAHomePage:
 
-    def test_sa_login(self):
+    @pytest.fixture()
+    def sahomepage(self):
+        sahomepage = SAHomePage(self.browser)
+        return sahomepage
+
+    def test_sa_login(self, sahomepage):
         url = self.config['SA']['URL']
         username = self.config['SA']['username']
         password = self.config['SA']['password']
-        self.sahomepage = SAHomePage(self.browser)
-        self.sahomepage.open(url)
-        self.sahomepage.login(username, password)
+        sahomepage.open(url)
+        sahomepage.login(username, password)
 
-    def test_sa_signout(self):
-        self.sahomepage = SAHomePage(self.browser)
-        self.sahomepage.signout()
+    def test_sa_signout(self, sahomepage):
+        sahomepage.signout()
 

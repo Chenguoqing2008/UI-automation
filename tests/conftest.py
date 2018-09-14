@@ -46,7 +46,8 @@ def env(request):
 
 @pytest.fixture(scope="class", autouse=True)
 def browser_instance(request):
-    if request.config.getoption('remote'):
+    remote = request.config.getoption('remote').upper()
+    if remote == 'FALSE':
         browser = Browser("chrome")
     else:
         browser = get_remote_browser()

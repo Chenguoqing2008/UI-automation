@@ -19,8 +19,8 @@ class IMPages(BasePage):
         login_button.click()
 
     def logout(self):
-        menu_icon = self.get_web_element(*self.locators.logouticon)
+        menu_icon = self.get_web_element(*self.locators.account_icon)
         menu_icon.click()
         logout_button = self.get_web_element(*self.locators.logout)
-        logout_button.click()
+        self.move_to_click(logout_button)
 

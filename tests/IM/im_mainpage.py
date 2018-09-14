@@ -3,19 +3,23 @@
 
 
 from pages.impages import IMPages as IMMaindPage
+import pytest
 
 
 class TestIMMainPageTest:
 
-    def test_im_login(self):
+    @pytest.fixture()
+    def immainpage(self):
+        immainpage = IMMaindPage(self.browser)
+        return immainpage
+
+    def test_im_login(self, immainpage):
         url = self.config['IM']['URL']
         username = self.config['IM']['username']
         password = self.config['IM']['password']
-        self.immainpage = IMMaindPage(self.browser)
-        self.immainpage.open(url)
-        self.immainpage.login(username, password)
+        immainpage.open(url)
+        immainpage.login(username, password)
 
-    def test_im_logout(self):
-        self.immainpage = IMMaindPage(self.browser)
-        self.immainpage.logout()
+    def test_im_logout(self, immainpage):
+        immainpage.logout()
 

@@ -12,7 +12,7 @@ class IMLocators:
     login = (By.CSS_SELECTOR, ".input-field button")
 
     # logout
-    logouticon = (By.CSS_SELECTOR, ".dropdown-button")
+    account_icon = (By.CSS_SELECTOR, "#nav-mobile > li:nth-child(4)  span")
     logout = (By.ID, "logout")
 
 
