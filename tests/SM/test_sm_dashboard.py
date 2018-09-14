@@ -3,9 +3,13 @@
 
 from pages.smpages import SMPages as SMDashBoardPage
 import pytest
+from hamcrest import *
 
 
 class TestSMDashBoard:
+
+    dashboard_title = "DASHBOARD"
+    login_text = "login"
 
     @pytest.fixture()
     def smdashboard(self):
@@ -18,9 +22,11 @@ class TestSMDashBoard:
         password = self.config['SM']['password']
         smdashboard.open(url)
         smdashboard.login(username, password)
+        assert_that(smdashboard.dashboard_text(), equal_to(self.dashboard_title))
 
     def test_sm_signout(self, smdashboard):
         smdashboard.signout()
+        assert_that(smdashboard.current_url_str(), contains_string(self.login_text))
 
 
 

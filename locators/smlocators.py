@@ -10,6 +10,7 @@ class SMLocators:
     name = "username"
     password = "password"
     login = (By.ID, "login")
+    dashboard = (By.CSS_SELECTOR, "md-toolbar > div > h2")
 
     # logout
     menu = (By.CSS_SELECTOR, "md-toolbar.main-toolbar button")

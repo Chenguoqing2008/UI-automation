@@ -15,12 +15,14 @@ class IMPages(BasePage):
     def login(self, username, password):
         self.fill_from(self.locators.name, username)
         self.fill_from(self.locators.password, password)
-        login_button = self.get_web_element(*self.locators.login)
-        login_button.click()
+        self.click_webelement(*self.locators.login)
+
+    def immainpage_icon_text(self):
+        return self.get_text(*self.locators.im_icon)
 
     def logout(self):
-        menu_icon = self.get_web_element(*self.locators.account_icon)
-        menu_icon.click()
-        logout_button = self.get_web_element(*self.locators.logout)
-        self.move_to_click(logout_button)
+        self.click_webelement(*self.locators.account_icon)
+        self.mouse_over_click(*self.locators.logout)
+        self.wait()
+
 

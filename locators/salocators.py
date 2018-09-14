@@ -10,6 +10,7 @@ class SALocators:
     name = "username"
     password = "password"
     login = (By.CSS_SELECTOR, ".form-group button")
+    home = (By.CSS_SELECTOR, ".toolbar > div.title")
 
     # logout
     moreicon = (By.CSS_SELECTOR, ".tabbar a:nth-child(4)")

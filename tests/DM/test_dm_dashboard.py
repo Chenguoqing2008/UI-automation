@@ -4,9 +4,13 @@
 
 from pages.dmpages import DMPages as DMDashBoardPage
 import pytest
+from hamcrest import *
 
 
 class TestDMDashBoardTest:
+
+    dashboard_title = "DASHBOARD"
+    login_text = "login"
 
     @pytest.fixture()
     def dmdashboard(self):
@@ -19,8 +23,10 @@ class TestDMDashBoardTest:
         password = self.config['DM']['password']
         dmdashboard.open(url)
         dmdashboard.login(username, password)
+        assert_that(dmdashboard.dashboard_text(), equal_to(self.dashboard_title))
 
     def test_dm_signout(self, dmdashboard):
         dmdashboard.signout()
+        assert_that(dmdashboard.current_url_str(), contains_string(self.login_text))
 
 

@@ -3,6 +3,7 @@
 
 from selenium.webdriver.support.expected_conditions import presence_of_all_elements_located as all_elements_located
 from selenium.webdriver.support.expected_conditions import presence_of_element_located as element_located
+from selenium.webdriver.support.expected_conditions import element_to_be_clickable as element_clickable
 from selenium.webdriver.support.ui import WebDriverWait
 from splinter.browser import Browser
 from selenium.webdriver.common.action_chains import ActionChains
@@ -64,7 +65,28 @@ class BasePage(object):
         element = self.browser.driver.find_element(*locator)
         return element
 
-    def move_to_click(self, webelement):
-        return ActionChains(self.browser.driver).move_to_element(webelement).click().perform()
+    # @log_exception('Failed to mouse over web element with xpath: {}')
+    def mouse_over_click(self, *locator):
+        actions = ActionChains(self.browser.driver)
+        actions.move_to_element(self.get_web_element(*locator)).perform()
+        self.click_webelement(*locator)
+        # self.logger.info('Mouse over web element with xpath: {}'.format(xpath))
+
+    def click_webelement(self, *locator):
+        self._get_element(*locator, expected_condition=element_clickable).click()
+
+    def wait(self, seconds=3):
+        self.browser.driver.implicitly_wait(seconds)
+
+    def get_text(self, *locator):
+        return self.get_web_element(*locator).text
+
+    def current_url_str(self):
+        return str(self.browser.driver.current_url)
+
+    def get_current_url(self):
+        return self.browser.driver.current_url
+
+
 
 

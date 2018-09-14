@@ -15,14 +15,16 @@ class SMPages(BasePage):
     def login(self, username, password):
         self.fill_from(self.locators.name, username)
         self.fill_from(self.locators.password, password)
-        login_button = self.get_web_element(*self.locators.login)
-        login_button.click()
+        self.click_webelement(*self.locators.login)
+
+    def dashboard_text(self):
+        return self.get_text(*self.locators.dashboard)
 
     def signout(self):
-        menu_icon = self.get_web_element(*self.locators.menu)
-        menu_icon.click()
-        signout_button = self.get_web_element(*self.locators.signout)
-        signout_button.click()
+        self.click_webelement(*self.locators.menu)
+        self.mouse_over_click(*self.locators.signout)
+        self.wait()
+
 
 
 

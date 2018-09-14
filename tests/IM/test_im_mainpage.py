@@ -4,9 +4,13 @@
 
 from pages.impages import IMPages as IMMaindPage
 import pytest
+from hamcrest import *
 
 
 class TestIMMainPageTest:
+
+    IM_mainpage_text = "Percolata Integration Manager"
+    login_text = "login"
 
     @pytest.fixture()
     def immainpage(self):
@@ -19,7 +23,9 @@ class TestIMMainPageTest:
         password = self.config['IM']['password']
         immainpage.open(url)
         immainpage.login(username, password)
+        assert_that(immainpage.immainpage_icon_text(), equal_to(self.IM_mainpage_text))
 
     def test_im_logout(self, immainpage):
         immainpage.logout()
+        assert_that(immainpage.current_url_str(), contains_string(self.login_text))
 

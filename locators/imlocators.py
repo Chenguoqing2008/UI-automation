@@ -10,6 +10,7 @@ class IMLocators:
     name = "email"
     password = "password"
     login = (By.CSS_SELECTOR, ".input-field button")
+    im_icon = (By.CSS_SELECTOR, ".brand-logo")
 
     # logout
     account_icon = (By.CSS_SELECTOR, "#nav-mobile > li:nth-child(4)  span")
