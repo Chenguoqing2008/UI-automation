@@ -9,8 +9,9 @@ from splinter.browser import Browser
 
 
 class Config:
-    basic_path = os.path.abspath(os.pardir)
-    config_path = os.path.join(basic_path, "config.yaml")
+    root_dir = os.path.dirname(os.path.abspath(__file__)).split('staffum-ui-automation')
+    basic_path = os.path.join(os.path.join(root_dir[0], 'staffum-ui-automation'), 'tests')
+    config_path = os.path.join(basic_path, 'config.yaml')
     ITEMS = yaml.load(open(config_path))
 
 
