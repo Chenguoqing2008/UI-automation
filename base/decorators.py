@@ -1,10 +1,9 @@
-"""
-Created on September 18, 2015
-
-@author: oleg-toporkov
-"""
 from functools import wraps
 import logging
+
+"""Inspired by  oleg-toporkov in github"""
+
+__author__ = "Robin Chen"
 
 
 def log_exception(message, logger=None):
@@ -23,7 +22,11 @@ def log_exception(message, logger=None):
             try:
                 return func(*args, **kwargs)
             except Exception:
-                log.error(message.format(args[1]))
+                if isinstance(args[1], tuple):
+                    by_selector = args[1][0]+' '+args[1][1]
+                    log.error(message.format(by_selector))
+                else:
+                    log.error(message.format(args[1]))
                 raise
         return wrapper
     return decorator

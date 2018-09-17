@@ -5,9 +5,10 @@
 from pages.dmpages import DMPages as DMDashBoardPage
 import pytest
 from hamcrest import *
+from base.logging import Logging
 
 
-class TestDMDashBoardTest:
+class TestDMDashBoardTest(Logging):
 
     dashboard_title = "DASHBOARD"
     login_text = "login"

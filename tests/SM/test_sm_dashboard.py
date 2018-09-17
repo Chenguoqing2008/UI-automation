@@ -4,9 +4,10 @@
 from pages.smpages import SMPages as SMDashBoardPage
 import pytest
 from hamcrest import *
+from base.logging import Logging
 
 
-class TestSMDashBoard:
+class TestSMDashBoard(Logging):
 
     dashboard_title = "DASHBOARD"
     login_text = "login"

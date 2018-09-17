@@ -5,9 +5,10 @@
 from pages.impages import IMPages as IMMaindPage
 import pytest
 from hamcrest import *
+from base.logging import Logging
 
 
-class TestIMMainPageTest:
+class TestIMMainPageTest(Logging):
 
     IM_mainpage_text = "Percolata Integration Manager"
     login_text = "login"
