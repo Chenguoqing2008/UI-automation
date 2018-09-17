@@ -15,7 +15,7 @@ class Config:
 
 
 def pytest_addoption(parser):
-    parser.addoption("--remote",  action="store", default=False,
+    parser.addoption("--remote",  action="store_true",
                      help="Use selenium grid to execute test cases or not.")
     parser.addoption("--env", action="store", default='QA',
                      help="Test environment QA or LIVE.")
@@ -46,8 +46,8 @@ def env(request):
 
 @pytest.fixture(scope="class", autouse=True)
 def browser_instance(request):
-    remote = request.config.getoption('remote').upper()
-    if remote == 'FALSE':
+    remote = request.config.getoption('remote')
+    if not remote:
         browser = Browser("chrome")
     else:
         browser = get_remote_browser()
