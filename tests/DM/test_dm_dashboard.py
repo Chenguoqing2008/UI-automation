@@ -5,7 +5,7 @@
 from pages.dmpages import DMPages as DMDashBoardPage
 import pytest
 from hamcrest import *
-from base.logging import Logging
+from base.util import Logging
 
 
 class TestDMDashBoardTest(Logging):
