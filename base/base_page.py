@@ -28,12 +28,6 @@ class BasePage(object):
         self.logger.addHandler(console_handler)
         self.timeout = 15
 
-    @staticmethod
-    def _get_console_handler(cls):
-        console_handler = logging.StreamHandler(sys.stdout)
-        console_handler.setFormatter(cls.FORMATTER)
-        return console_handler
-
     @log_exception('Failed open URL: {}')
     def open(self, url):
         self.browser.visit(url)
