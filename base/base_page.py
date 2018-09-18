@@ -8,6 +8,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from splinter.browser import Browser
 from selenium.webdriver.common.action_chains import ActionChains
 import logging
+import sys
 from base.decorators import log_exception
 
 """Inspired by  oleg-toporkov in github"""
@@ -17,12 +18,21 @@ __author__ = "Robin Chen"
 
 
 class BasePage(object):
+    FORMATTER = logging.Formatter("%(asctime)s — %(name)s — %(levelname)s — %(message)s")
 
     def __init__(self, browser):
+        console_handler = logging.StreamHandler(sys.stdout)
+        console_handler.setFormatter(self.FORMATTER)
         self.browser = browser
         self.logger = logging.getLogger(self.__class__.__name__)
-        # self.browser = Browser('chrome')
+        self.logger.addHandler(console_handler)
         self.timeout = 15
+
+    @staticmethod
+    def _get_console_handler(cls):
+        console_handler = logging.StreamHandler(sys.stdout)
+        console_handler.setFormatter(cls.FORMATTER)
+        return console_handler
 
     @log_exception('Failed open URL: {}')
     def open(self, url):
@@ -31,7 +41,7 @@ class BasePage(object):
 
     @log_exception('Failed found form name: {}')
     def fill_from(self, name, value):
-        form_string = name + '' + value
+        form_string = name + ' ' + value
         self.browser.fill(name, value)
         self.logger.info('Fill the form name: {}'.format(form_string))
 
@@ -73,7 +83,7 @@ class BasePage(object):
 
     @log_exception('Failed to mouse over web element with by_selector: {}')
     def mouse_over_click(self, *locator):
-        by_selector = locator[0] + ' ' + locator[1]
+        by_selector = locator[0] + '  ' + locator[1]
         actions = ActionChains(self.browser.driver)
         actions.move_to_element(self.get_web_element(*locator)).perform()
         self.click_webelement(*locator)
