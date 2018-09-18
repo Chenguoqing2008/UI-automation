@@ -9,7 +9,7 @@ from splinter.browser import Browser
 from selenium.webdriver.common.action_chains import ActionChains
 import logging
 import sys
-from base.decorators import log_exception
+from base.util import log_exception
 
 """Inspired by  oleg-toporkov in github"""
 """Inspired by  Marcin Koprek in github"""

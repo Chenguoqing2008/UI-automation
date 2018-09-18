@@ -30,3 +30,8 @@ def log_exception(message, logger=None):
                 raise
         return wrapper
     return decorator
+
+
+class Logging:
+    logging.basicConfig(level=logging.INFO)
+

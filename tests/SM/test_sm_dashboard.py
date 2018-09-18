@@ -4,7 +4,7 @@
 from pages.smpages import SMPages as SMDashBoardPage
 import pytest
 from hamcrest import *
-from base.logging import Logging
+from base.util import Logging
 
 
 class TestSMDashBoard(Logging):

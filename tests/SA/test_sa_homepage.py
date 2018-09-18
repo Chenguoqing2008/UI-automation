@@ -5,7 +5,7 @@
 from pages.sapages import SAPages as SAHomePage
 import pytest
 from hamcrest import *
-from base.logging import Logging
+from base.util import Logging
 
 
 class TestSAHomePage(Logging):
