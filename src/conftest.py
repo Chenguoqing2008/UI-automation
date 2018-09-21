@@ -62,7 +62,7 @@ def browser_instance(request):
     #     browser = Browser("chrome", **Config.EXECUTABLE_PATH)
     # else:
     #     browser = get_remote_browser()
-    browser = Browser("chrome", **Config.EXECUTABLE_PATH, headless=True)
+    browser = Browser("chrome", **Config.EXECUTABLE_PATH)
     browser.driver.maximize_window()
     request.cls.browser = browser
     yield
