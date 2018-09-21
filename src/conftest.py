@@ -57,11 +57,12 @@ def env(request):
 
 @pytest.fixture(scope="class", autouse=True)
 def browser_instance(request):
-    remote = request.config.getoption('remote')
-    if not remote:
-        browser = Browser("chrome", **Config.EXECUTABLE_PATH)
-    else:
-        browser = get_remote_browser()
+    # remote = request.config.getoption('remote')
+    # if not remote:
+    #     browser = Browser("chrome", **Config.EXECUTABLE_PATH)
+    # else:
+    #     browser = get_remote_browser()
+    browser = Browser("chrome", **Config.EXECUTABLE_PATH, headless=True)
     browser.driver.maximize_window()
     request.cls.browser = browser
     yield
