@@ -35,6 +35,7 @@ def get_remote_browser():
     remote_server_url = Config.ITEMS['remote_url']
     chrome_options = Options()
     chrome_options.add_argument("headless")
+    chrome_options.add_argument('--no-sandbox')
     capabilities = chrome_options.to_capabilities()
     browser = Browser(
         driver_name="remote",
