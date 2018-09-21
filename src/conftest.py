@@ -6,7 +6,6 @@ import os
 import yaml
 from selenium.webdriver.chrome.options import Options
 from splinter.browser import Browser
-import platform
 
 
 class Config:
@@ -14,20 +13,11 @@ class Config:
     config_path = os.path.join(root_dir, 'config.yaml')
     ITEMS = yaml.load(open(config_path))
 
-    driver_path = os.path.join(root_dir, 'utilities')
-
-    if'Ubuntu' in platform.platform() or 'Darwin' in platform.platform():
-        chrome_driver_path = os.path.join(driver_path, 'chromedriver')
-    else:
-        chrome_driver_path = os.path.join(driver_path, 'chromedriver.exe')
-
-    EXECUTABLE_PATH = {'executable_path': chrome_driver_path}
-
 
 def pytest_addoption(parser):
-    parser.addoption("--remote",  action="store_true",
+    parser.addoption("--remote", action="store_true", default=False, dest="remote",
                      help="Use selenium grid to execute test cases or not.")
-    parser.addoption("--env", action="store", default='QA',
+    parser.addoption("--env", action="store", default='QA', type="string",
                      help="Test environment QA or LIVE.")
 
 
@@ -35,7 +25,6 @@ def get_remote_browser():
     remote_server_url = Config.ITEMS['remote_url']
     chrome_options = Options()
     chrome_options.add_argument("headless")
-    chrome_options.add_argument('--no-sandbox')
     capabilities = chrome_options.to_capabilities()
     browser = Browser(
         driver_name="remote",
@@ -57,15 +46,11 @@ def env(request):
 
 @pytest.fixture(scope="class", autouse=True)
 def browser_instance(request):
-    # remote = request.config.getoption('remote')
-    # if not remote:
-    #     browser = Browser("chrome", **Config.EXECUTABLE_PATH)
-    # else:
-    #     browser = get_remote_browser()
-    # chrome_options = Options()
-    # chrome_options.add_argument('--no-sandbox')
-    browser = Browser("chrome", headless=True)
-
+    remote = request.config.getoption('remote')
+    if not remote:
+        browser = Browser("chrome")
+    else:
+        browser = get_remote_browser()
     browser.driver.maximize_window()
     request.cls.browser = browser
     yield
