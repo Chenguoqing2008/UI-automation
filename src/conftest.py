@@ -14,6 +14,15 @@ class Config:
     config_path = os.path.join(root_dir, 'config.yaml')
     ITEMS = yaml.load(open(config_path))
 
+    driver_path = os.path.join(root_dir, 'utilities')
+
+    if platform.system() != 'Windows':
+        chrome_driver_path = os.path.join(driver_path, 'chromedriver')
+        EXECUTABLE_PATH = {'executable_path': chrome_driver_path, 'headless': True}
+    else:
+        chrome_driver_path = os.path.join(driver_path, 'chromedriver.exe')
+        EXECUTABLE_PATH = {'executable_path': chrome_driver_path}
+
 
 def pytest_addoption(parser):
     parser.addoption("--remote", action="store_true", default=False, dest="remote",
@@ -49,10 +58,7 @@ def env(request):
 def browser_instance(request):
     remote = request.config.getoption('remote')
     if not remote:
-        if platform.system() != 'Windows':
-            browser = Browser("chrome", headless=True)
-        else:
-            browser = Browser("chrome")
+        browser = Browser("chrome", **Config.EXECUTABLE_PATH)
     else:
         browser = get_remote_browser()
     browser.driver.maximize_window()
