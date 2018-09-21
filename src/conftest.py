@@ -62,7 +62,10 @@ def browser_instance(request):
     #     browser = Browser("chrome", **Config.EXECUTABLE_PATH)
     # else:
     #     browser = get_remote_browser()
-    browser = Browser("chrome", **Config.EXECUTABLE_PATH)
+    # chrome_options = Options()
+    # chrome_options.add_argument('--no-sandbox')
+    browser = Browser("chrome", headless=True)
+
     browser.driver.maximize_window()
     request.cls.browser = browser
     yield
