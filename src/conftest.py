@@ -6,6 +6,7 @@ import os
 import yaml
 from selenium.webdriver.chrome.options import Options
 from splinter.browser import Browser
+import platform
 
 
 class Config:
@@ -48,7 +49,10 @@ def env(request):
 def browser_instance(request):
     remote = request.config.getoption('remote')
     if not remote:
-        browser = Browser("chrome")
+        if 'Ubuntu' in platform.platform() or 'Darwin' in platform.platform():
+            browser = Browser("chrome", headless=True)
+        else:
+            browser = Browser("chrome")
     else:
         browser = get_remote_browser()
     browser.driver.maximize_window()
