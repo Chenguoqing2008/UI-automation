@@ -49,7 +49,7 @@ def env(request):
 def browser_instance(request):
     remote = request.config.getoption('remote')
     if not remote:
-        if 'Ubuntu' in platform.platform() or 'Darwin' in platform.platform():
+        if platform.system() != 'Windows':
             browser = Browser("chrome", headless=True)
         else:
             browser = Browser("chrome")
