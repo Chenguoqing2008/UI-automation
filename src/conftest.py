@@ -6,12 +6,22 @@ import os
 import yaml
 from selenium.webdriver.chrome.options import Options
 from splinter.browser import Browser
+import platform
 
 
 class Config:
     root_dir = os.path.dirname(os.path.abspath(__file__))
     config_path = os.path.join(root_dir, 'config.yaml')
     ITEMS = yaml.load(open(config_path))
+
+    driver_path = os.path.join(root_dir, 'utilities')
+
+    if'Ubuntu' in platform.platform() or 'Darwin' in platform.platform():
+        chrome_driver_path = os.path.join(driver_path, 'chromedriver')
+    else:
+        chrome_driver_path = os.path.join(driver_path, 'chromedriver.exe')
+
+    EXECUTABLE_PATH = {'executable_path': chrome_driver_path}
 
 
 def pytest_addoption(parser):
@@ -48,7 +58,7 @@ def env(request):
 def browser_instance(request):
     remote = request.config.getoption('remote')
     if not remote:
-        browser = Browser("chrome")
+        browser = Browser("chrome", **Config.EXECUTABLE_PATH)
     else:
         browser = get_remote_browser()
     browser.driver.maximize_window()
