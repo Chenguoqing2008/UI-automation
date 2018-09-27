@@ -58,10 +58,9 @@ def env(request):
 def browser_instance(request):
     remote = request.config.getoption('remote')
     if not remote:
-        # browser = Browser("chrome", **Config.EXECUTABLE_PATH)
-        browser = get_remote_browser()
-    else:
         browser = Browser("chrome", **Config.EXECUTABLE_PATH)
+    else:
+        browser = get_remote_browser()
     browser.driver.maximize_window()
     request.cls.browser = browser
     yield
