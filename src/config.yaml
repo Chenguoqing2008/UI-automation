@@ -1,23 +1,23 @@
 QA:
   SM:
-    URL: "http://qasm.percolata.com"
-    username: "beta17@calendar.percolata.com"
-    password: "baysensor"
+    URL: *
+    username: *
+    password: *
 
   DM:
-    URL: "http://qasm.percolata.com"
-    username: "percolata@admin.percolata.com"
+    URL: *
+    username: *
     password: "qwerty"
 
   SA:
-    URL: "http://qasa.percolata.com/auth/login"
-    username: "alpha11@calendar.percolata.com"
-    password: "qwerty"
+    URL: *
+    username: *
+    password: *
 
   IM:
-    URL: "http://qaim.percolata.com/login"
-    username: "test@percolata.com"
-    password: "percolata"
+    URL: *
+    username: *
+    password: *
 
-remote_url: "http://192.168.0.115:4444/wd/hub"
+remote_url: *
 
