@@ -7,7 +7,7 @@ QA:
   DM:
     URL: *
     username: *
-    password: "qwerty"
+    password: *
 
   SA:
     URL: *
