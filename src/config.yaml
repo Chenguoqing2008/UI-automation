@@ -1,20 +1,5 @@
 QA:
-  SM:
-    URL: *
-    username: *
-    password: *
-
   DM:
-    URL: *
-    username: *
-    password: *
-
-  SA:
-    URL: *
-    username: *
-    password: *
-
-  IM:
     URL: *
     username: *
     password: *
